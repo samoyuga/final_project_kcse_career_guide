@@ -1,0 +1,520 @@
+/* KCSE Career Guide - Main Stylesheet */
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+    --primary-color: #4ECDC4;
+    --primary-dark: #2BBBB5;
+    --primary-light: #7BD7D1;
+    --secondary-color: #FF6B6B;
+    --secondary-dark: #FF5252;
+    --accent-color: #45B7D1;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --dark-color: #2c3e50;
+    --light-color: #f8f9fa;
+    --gray-color: #6c757d;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* ===== GLOBAL STYLES ===== */
+.main {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+}
+
+.stApp {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h2 {
+    font-size: 2rem;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+}
+
+/* ===== LAYOUT COMPONENTS ===== */
+.css-1d391kg, .css-1r6slb0 {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid #e9ecef;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== BUTTONS ===== */
+.stButton>button {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stButton>button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(45deg, var(--primary-dark), var(--accent-color));
+}
+
+.stButton>button:active {
+    transform: translateY(0);
+}
+
+/* Primary button variant */
+.stButton>button[kind="primary"] {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+}
+
+.stButton>button[kind="primary"]:hover {
+    background: linear-gradient(45deg, var(--primary-dark), #3A9DB9);
+}
+
+/* Secondary button variant */
+.stButton>button[kind="secondary"] {
+    background: linear-gradient(45deg, var(--gray-color), #868e96);
+}
+
+/* ===== FORM ELEMENTS ===== */
+.stSelectbox>div>div, .stTextInput>div>div>input {
+    border-radius: var(--border-radius);
+    border: 2px solid #e9ecef;
+    transition: var(--transition);
+    padding: 10px 12px;
+    font-size: 1rem;
+}
+
+.stSelectbox>div>div:focus, .stTextInput>div>div>input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(78, 205, 196, 0.25);
+}
+
+.stTextInput>div>div>input::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+/* ===== SIDEBAR ===== */
+.css-1d391kg .sidebar .sidebar-content {
+    background: linear-gradient(180deg, var(--dark-color) 0%, #3498db 100%);
+    color: white;
+}
+
+.sidebar .sidebar-content {
+    background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    padding: 2rem 1rem;
+}
+
+.sidebar .sidebar-content h1,
+.sidebar .sidebar-content h2,
+.sidebar .sidebar-content h3,
+.sidebar .sidebar-content h4 {
+    color: white;
+}
+
+.sidebar .sidebar-content .stMarkdown {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== CARDS ===== */
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin: 1rem 0;
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.step-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.career-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    transition: var(--transition);
+}
+
+.career-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== METRICS AND SCORES ===== */
+.match-score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--dark-color);
+    text-align: center;
+}
+
+.match-score.high {
+    color: var(--success-color);
+}
+
+.match-score.medium {
+    color: var(--warning-color);
+}
+
+.match-score.low {
+    color: var(--danger-color);
+}
+
+/* ===== ALERTS AND MESSAGES ===== */
+.stAlert {
+    border-radius: var(--border-radius);
+    border: none;
+    padding: 1rem 1.5rem;
+}
+
+.stAlert [data-testid="stMarkdownContainer"] {
+    font-weight: 500;
+}
+
+/* Success alerts */
+.stAlert [data-baseweb="notification"][kind="success"] {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border-left: 4px solid var(--success-color);
+    color: #155724;
+}
+
+/* Error alerts */
+.stAlert [data-baseweb="notification"][kind="error"] {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border-left: 4px solid var(--danger-color);
+    color: #721c24;
+}
+
+/* Warning alerts */
+.stAlert [data-baseweb="notification"][kind="warning"] {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border-left: 4px solid var(--warning-color);
+    color: #856404;
+}
+
+/* Info alerts */
+.stAlert [data-baseweb="notification"][kind="info"] {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    border-left: 4px solid var(--accent-color);
+    color: #0c5460;
+}
+
+/* ===== SPECIAL COMPONENTS ===== */
+.insight-box {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+    box-shadow: var(--box-shadow);
+}
+
+.insight-box h4 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.university-list {
+    background: var(--light-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin: 0.5rem 0;
+    border-left: 3px solid var(--primary-color);
+}
+
+.payment-summary {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid var(--warning-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+/* ===== DATA VISUALIZATION ENHANCEMENTS ===== */
+/* Plotly chart containers */
+.js-plotly-plot .plotly {
+    border-radius: var(--border-radius);
+}
+
+/* Dataframe styling */
+.dataframe {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.dataframe thead th {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    font-weight: 600;
+}
+
+/* ===== PROGRESS AND LOADING ===== */
+.stProgress > div > div > div > div {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+}
+
+/* ===== EXPANDER COMPONENTS ===== */
+.streamlit-expanderHeader {
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    border-left: 4px solid var(--primary-color);
+}
+
+.streamlit-expanderContent {
+    background: white;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+/* ===== CUSTOM CLASSES FOR SPECIFIC USE CASES ===== */
+.subject-grade-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.subject-grade-table th,
+.subject-grade-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.subject-grade-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+.subject-grade-table tr:hover {
+    background-color: rgba(78, 205, 196, 0.1);
+}
+
+/* Payment status indicators */
+.payment-status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+}
+
+.payment-status.success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.payment-status.pending {
+    background-color: var(--warning-color);
+    color: black;
+}
+
+.payment-status.failed {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .main .block-container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .feature-card, .step-card {
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .main {
+        background: white !important;
+    }
+    
+    .feature-card, .career-card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus indicators for keyboard navigation */
+.stButton>button:focus,
+.stSelectbox>div>div:focus,
+.stTextInput>div>div>input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* ===== CUSTOM UTILITY CLASSES ===== */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.text-danger {
+    color: var(--danger-color) !important;
+}
+
+.bg-light {
+    background-color: var(--light-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.rounded {
+    border-radius: var(--border-radius) !important;
+}
+
+.shadow {
+    box-shadow: var(--box-shadow) !important;
+}
+
+/* ===== FOOTER STYLING ===== */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--gray-color);
+    border-top: 1px solid #dee2e6;
+    margin-top: 3rem;
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

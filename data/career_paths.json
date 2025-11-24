@@ -1,0 +1,934 @@
+{
+  "career_clusters": {
+    "Medicine and Health Sciences": {
+      "description": "Careers in healthcare, medicine, dentistry, pharmacy, and medical research",
+      "icon": "🏥",
+      "careers": [
+        {
+          "career": "Medical Doctor",
+          "description": "Diagnose and treat illnesses, perform medical procedures, and provide healthcare services",
+          "required_subjects": ["Biology", "Chemistry", "Physics"],
+          "required_grades": {
+            "Biology": "B+",
+            "Chemistry": "B+",
+            "Physics": "B",
+            "Mathematics": "B+",
+            "English": "B-"
+          },
+          "skills": ["Problem Solving", "Critical Thinking", "Communication", "Empathy", "Attention to Detail", "Decision Making"],
+          "interests": ["Sciences", "Medicine", "Research", "Helping People", "Healthcare", "Biology"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "JKUAT", "Mount Kenya University", "Uzima University"],
+          "courses": ["Bachelor of Medicine and Surgery", "Bachelor of Dental Surgery"],
+          "career_outlook": "High demand in both public and private sectors",
+          "average_salary": "KES 150,000 - 500,000+",
+          "duration": "6 years"
+        },
+        {
+          "career": "Clinical Officer",
+          "description": "Provide clinical care and medical services under supervision in various healthcare settings",
+          "required_subjects": ["Biology", "Chemistry"],
+          "required_grades": {
+            "Biology": "C+",
+            "Chemistry": "C+",
+            "Mathematics": "C+",
+            "English": "C+"
+          },
+          "skills": ["Communication", "Teamwork", "Problem Solving", "Empathy", "Clinical Skills"],
+          "interests": ["Medicine", "Healthcare", "Community Service", "Helping People", "Clinical Work"],
+          "universities": ["Kenya Medical Training College", "University of Nairobi", "Kenyatta University", "Moi University"],
+          "courses": ["Diploma in Clinical Medicine", "Bachelor of Clinical Medicine"],
+          "career_outlook": "High demand especially in rural areas",
+          "average_salary": "KES 50,000 - 150,000",
+          "duration": "3-4 years"
+        },
+        {
+          "career": "Pharmacist",
+          "description": "Prepare and dispense medications, provide drug information to healthcare professionals and patients",
+          "required_subjects": ["Biology", "Chemistry", "Physics"],
+          "required_grades": {
+            "Biology": "B",
+            "Chemistry": "B+",
+            "Mathematics": "B",
+            "English": "C+"
+          },
+          "skills": ["Attention to Detail", "Analytical Thinking", "Communication", "Organization", "Mathematics"],
+          "interests": ["Sciences", "Medicine", "Chemistry", "Healthcare", "Pharmacy"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "Mount Kenya University", "Kabarak University"],
+          "courses": ["Bachelor of Pharmacy", "Doctor of Pharmacy"],
+          "career_outlook": "Good opportunities in hospitals, retail, and pharmaceutical companies",
+          "average_salary": "KES 80,000 - 250,000",
+          "duration": "5 years"
+        },
+        {
+          "career": "Nurse",
+          "description": "Provide patient care, administer medications, and assist doctors in medical procedures",
+          "required_subjects": ["Biology", "Chemistry"],
+          "required_grades": {
+            "Biology": "C+",
+            "Chemistry": "C+",
+            "Mathematics": "C+",
+            "English": "C+"
+          },
+          "skills": ["Empathy", "Communication", "Teamwork", "Attention to Detail", "Stress Management"],
+          "interests": ["Healthcare", "Helping People", "Medicine", "Community Service"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "KMTC", "Daystar University"],
+          "courses": ["Bachelor of Science in Nursing", "Kenya Registered Community Health Nursing"],
+          "career_outlook": "Always in demand with opportunities locally and internationally",
+          "average_salary": "KES 40,000 - 120,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Dentist",
+          "description": "Diagnose and treat dental problems, perform dental procedures, and promote oral health",
+          "required_subjects": ["Biology", "Chemistry", "Physics"],
+          "required_grades": {
+            "Biology": "B+",
+            "Chemistry": "B+",
+            "Physics": "B-",
+            "Mathematics": "B"
+          },
+          "skills": ["Manual Dexterity", "Attention to Detail", "Communication", "Problem Solving"],
+          "interests": ["Medicine", "Healthcare", "Dentistry", "Biology"],
+          "universities": ["University of Nairobi", "Kenyatta University", "MOI University"],
+          "courses": ["Bachelor of Dental Surgery"],
+          "career_outlook": "Good demand in urban areas",
+          "average_salary": "KES 100,000 - 400,000",
+          "duration": "5 years"
+        }
+      ]
+    },
+    "Engineering and Technology": {
+      "description": "Careers in various engineering disciplines and technology innovation",
+      "icon": "⚙️",
+      "careers": [
+        {
+          "career": "Software Engineer",
+          "description": "Design, develop, and maintain software systems and applications for various platforms",
+          "required_subjects": ["Mathematics", "Physics"],
+          "required_grades": {
+            "Mathematics": "B+",
+            "Physics": "B",
+            "English": "C+",
+            "Computer Studies": "B"
+          },
+          "skills": ["Problem Solving", "Technical Skills", "Creativity", "Analytical Thinking", "Logic", "Programming"],
+          "interests": ["Technology", "Computers", "Innovation", "Problem Solving", "Programming", "Mathematics"],
+          "universities": ["JKUAT", "University of Nairobi", "Strathmore University", "Kenyatta University", "Technical University of Kenya", "Mount Kenya University"],
+          "courses": ["Bachelor of Computer Science", "Bachelor of Software Engineering", "Bachelor of Information Technology"],
+          "career_outlook": "Very high demand with excellent growth potential",
+          "average_salary": "KES 70,000 - 300,000+",
+          "duration": "4 years"
+        },
+        {
+          "career": "Civil Engineer",
+          "description": "Design and oversee construction of infrastructure projects like roads, buildings, and bridges",
+          "required_subjects": ["Mathematics", "Physics", "Chemistry"],
+          "required_grades": {
+            "Mathematics": "B+",
+            "Physics": "B",
+            "Chemistry": "C+",
+            "English": "C+"
+          },
+          "skills": ["Problem Solving", "Analytical Thinking", "Project Management", "Design", "Mathematics"],
+          "interests": ["Engineering", "Construction", "Infrastructure", "Design", "Mathematics", "Physics"],
+          "universities": ["University of Nairobi", "JKUAT", "Technical University of Kenya", "Moi University", "Kenyatta University"],
+          "courses": ["Bachelor of Civil Engineering", "Bachelor of Construction Management"],
+          "career_outlook": "Good opportunities especially with government infrastructure projects",
+          "average_salary": "KES 60,000 - 250,000",
+          "duration": "5 years"
+        },
+        {
+          "career": "Electrical Engineer",
+          "description": "Design, develop, and maintain electrical systems and electronic devices",
+          "required_subjects": ["Mathematics", "Physics", "Chemistry"],
+          "required_grades": {
+            "Mathematics": "B+",
+            "Physics": "B+",
+            "Chemistry": "C+",
+            "English": "C+"
+          },
+          "skills": ["Analytical Thinking", "Problem Solving", "Technical Skills", "Mathematics", "Design"],
+          "interests": ["Technology", "Engineering", "Electronics", "Innovation", "Physics"],
+          "universities": ["University of Nairobi", "JKUAT", "Moi University", "Technical University of Kenya", "Kenyatta University"],
+          "courses": ["Bachelor of Electrical Engineering", "Bachelor of Electronic Engineering"],
+          "career_outlook": "Good demand in energy, manufacturing, and telecommunications",
+          "average_salary": "KES 65,000 - 220,000",
+          "duration": "5 years"
+        },
+        {
+          "career": "Mechanical Engineer",
+          "description": "Design and develop mechanical systems, machines, and manufacturing processes",
+          "required_subjects": ["Mathematics", "Physics", "Chemistry"],
+          "required_grades": {
+            "Mathematics": "B+",
+            "Physics": "B",
+            "Chemistry": "C+",
+            "English": "C+"
+          },
+          "skills": ["Problem Solving", "Technical Skills", "Design", "Analytical Thinking", "Mathematics"],
+          "interests": ["Engineering", "Machines", "Design", "Manufacturing", "Physics"],
+          "universities": ["University of Nairobi", "JKUAT", "Moi University", "Technical University of Kenya"],
+          "courses": ["Bachelor of Mechanical Engineering", "Bachelor of Production Engineering"],
+          "career_outlook": "Good opportunities in manufacturing and automotive industries",
+          "average_salary": "KES 60,000 - 200,000",
+          "duration": "5 years"
+        }
+      ]
+    },
+    "Business and Economics": {
+      "description": "Careers in business management, economics, finance, and entrepreneurship",
+      "icon": "💼",
+      "careers": [
+        {
+          "career": "Chartered Accountant",
+          "description": "Manage financial records, provide financial advice, ensure compliance with accounting standards",
+          "required_subjects": ["Mathematics", "Business Studies"],
+          "required_grades": {
+            "Mathematics": "B",
+            "English": "C+",
+            "Business Studies": "C+"
+          },
+          "skills": ["Analytical Thinking", "Organization", "Attention to Detail", "Communication", "Mathematics"],
+          "interests": ["Business", "Finance", "Numbers", "Analysis", "Accounting"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Strathmore University", "Mount Kenya University", "USIU Africa", "Moi University"],
+          "courses": ["Bachelor of Commerce", "Bachelor of Business Administration", "Bachelor of Economics"],
+          "career_outlook": "Stable career with opportunities in all sectors",
+          "average_salary": "KES 80,000 - 350,000",
+          "duration": "4 years + CPA"
+        },
+        {
+          "career": "Business Manager",
+          "description": "Oversee business operations, manage teams, and make strategic decisions for organizational growth",
+          "required_subjects": ["Mathematics", "Business Studies"],
+          "required_grades": {
+            "Mathematics": "C+",
+            "English": "C+",
+            "Business Studies": "C+"
+          },
+          "skills": ["Leadership", "Communication", "Strategic Thinking", "Decision Making", "Management"],
+          "interests": ["Business", "Management", "Entrepreneurship", "Leadership", "Strategy"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Strathmore University", "Mount Kenya University", "JKUAT"],
+          "courses": ["Bachelor of Business Management", "Bachelor of Commerce", "Bachelor of Business Administration"],
+          "career_outlook": "Good opportunities across all industries",
+          "average_salary": "KES 70,000 - 300,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Economist",
+          "description": "Analyze economic data, research trends, and provide economic policy advice",
+          "required_subjects": ["Mathematics", "Geography"],
+          "required_grades": {
+            "Mathematics": "B",
+            "English": "B-",
+            "Geography": "C+"
+          },
+          "skills": ["Analytical Thinking", "Research", "Data Analysis", "Mathematics", "Critical Thinking"],
+          "interests": ["Economics", "Mathematics", "Research", "Policy", "Analysis"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "Strathmore University"],
+          "courses": ["Bachelor of Economics", "Bachelor of Arts in Economics"],
+          "career_outlook": "Opportunities in government, research, and financial institutions",
+          "average_salary": "KES 60,000 - 200,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Education and Training": {
+      "description": "Careers in teaching, education administration, and training",
+      "icon": "📚",
+      "careers": [
+        {
+          "career": "Secondary School Teacher",
+          "description": "Educate students in specific subject areas at secondary level, develop lesson plans and assess student progress",
+          "required_subjects": [],
+          "required_grades": {
+            "English": "C+",
+            "Mathematics": "C+"
+          },
+          "skills": ["Communication", "Public Speaking", "Patience", "Leadership", "Teaching", "Subject Expertise"],
+          "interests": ["Education", "Teaching", "Mentoring", "Community Development", "Subject Expertise"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Moi University", "Egerton University", "Maseno University", "Mount Kenya University"],
+          "courses": ["Bachelor of Education", "Postgraduate Diploma in Education"],
+          "career_outlook": "Stable career with opportunities in public and private schools",
+          "average_salary": "KES 40,000 - 120,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "University Lecturer",
+          "description": "Teach university students, conduct research, and publish academic work",
+          "required_subjects": [],
+          "required_grades": {
+            "English": "B",
+            "Mathematics": "B-"
+          },
+          "skills": ["Research", "Communication", "Subject Expertise", "Mentoring", "Academic Writing"],
+          "interests": ["Education", "Research", "Teaching", "Academic Work", "Specialized Subject"],
+          "universities": ["All public and private universities"],
+          "courses": ["Bachelor's degree in specialized field + Masters + PhD"],
+          "career_outlook": "Competitive but rewarding academic career",
+          "average_salary": "KES 80,000 - 300,000",
+          "duration": "8+ years"
+        }
+      ]
+    },
+    "Agriculture and Natural Resources": {
+      "description": "Careers in agriculture, forestry, environmental conservation, and natural resource management",
+      "icon": "🌱",
+      "careers": [
+        {
+          "career": "Agricultural Engineer",
+          "description": "Design agricultural machinery and equipment, develop sustainable farming practices",
+          "required_subjects": ["Mathematics", "Physics", "Biology"],
+          "required_grades": {
+            "Mathematics": "B",
+            "Physics": "C+",
+            "Biology": "C+",
+            "Chemistry": "C+"
+          },
+          "skills": ["Problem Solving", "Technical Skills", "Analytical Thinking", "Innovation", "Design"],
+          "interests": ["Agriculture", "Technology", "Environment", "Engineering", "Innovation"],
+          "universities": ["JKUAT", "University of Nairobi", "Egerton University", "Moi University"],
+          "courses": ["Bachelor of Agricultural Engineering", "Bachelor of Science in Agricultural Engineering"],
+          "career_outlook": "Good opportunities in agricultural research and development",
+          "average_salary": "KES 55,000 - 180,000",
+          "duration": "5 years"
+        },
+        {
+          "career": "Agricultural Economist",
+          "description": "Analyze agricultural markets, policies, and resource allocation in farming",
+          "required_subjects": ["Mathematics", "Geography", "Agriculture"],
+          "required_grades": {
+            "Mathematics": "C+",
+            "Geography": "C+",
+            "Agriculture": "C+"
+          },
+          "skills": ["Analytical Thinking", "Research", "Data Analysis", "Economics", "Agriculture Knowledge"],
+          "interests": ["Agriculture", "Economics", "Research", "Policy", "Business"],
+          "universities": ["University of Nairobi", "Egerton University", "Kenyatta University", "Moi University"],
+          "courses": ["Bachelor of Science in Agricultural Economics"],
+          "career_outlook": "Important for agricultural policy and development",
+          "average_salary": "KES 50,000 - 150,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Arts and Humanities": {
+      "description": "Careers in languages, literature, history, philosophy, and cultural studies",
+      "icon": "🎨",
+      "careers": [
+        {
+          "career": "Journalist",
+          "description": "Research and report news stories across various media platforms",
+          "required_subjects": ["English", "History"],
+          "required_grades": {
+            "English": "B",
+            "History": "C+"
+          },
+          "skills": ["Writing", "Communication", "Research", "Interviewing", "Critical Thinking"],
+          "interests": ["Writing", "Media", "Current Affairs", "Research", "Communication"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Daystar University", "USIU Africa"],
+          "courses": ["Bachelor of Arts in Journalism", "Bachelor of Arts in Mass Communication"],
+          "career_outlook": "Opportunities in traditional and digital media",
+          "average_salary": "KES 35,000 - 100,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Writer/Author",
+          "description": "Create written content for books, articles, scripts, and other publications",
+          "required_subjects": ["English", "Literature"],
+          "required_grades": {
+            "English": "B+",
+            "Literature": "B-"
+          },
+          "skills": ["Writing", "Creativity", "Research", "Storytelling", "Language Skills"],
+          "interests": ["Writing", "Literature", "Creativity", "Reading", "Storytelling"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "Daystar University"],
+          "courses": ["Bachelor of Arts in Literature", "Bachelor of Arts in Communication"],
+          "career_outlook": "Competitive but rewarding for talented writers",
+          "average_salary": "KES 30,000 - 200,000+",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Sciences": {
+      "description": "Careers in pure sciences including biology, chemistry, physics, and mathematics",
+      "icon": "🔬",
+      "careers": [
+        {
+          "career": "Research Scientist",
+          "description": "Conduct scientific research in various fields including biology, chemistry, and physics",
+          "required_subjects": ["Biology", "Chemistry", "Physics", "Mathematics"],
+          "required_grades": {
+            "Mathematics": "B+",
+            "Physics": "B",
+            "Chemistry": "B",
+            "Biology": "B"
+          },
+          "skills": ["Research", "Analytical Thinking", "Problem Solving", "Data Analysis", "Scientific Method"],
+          "interests": ["Sciences", "Research", "Experimentation", "Discovery", "Analysis"],
+          "universities": ["University of Nairobi", "Kenyatta University", "JKUAT", "Moi University", "Egerton University"],
+          "courses": ["Bachelor of Science in various specializations"],
+          "career_outlook": "Opportunities in research institutions and universities",
+          "average_salary": "KES 60,000 - 180,000",
+          "duration": "4 years + postgraduate"
+        },
+        {
+          "career": "Laboratory Technologist",
+          "description": "Perform laboratory tests and analyses in medical, research, or industrial settings",
+          "required_subjects": ["Biology", "Chemistry"],
+          "required_grades": {
+            "Biology": "C+",
+            "Chemistry": "C+",
+            "Mathematics": "C+"
+          },
+          "skills": ["Attention to Detail", "Technical Skills", "Analytical Thinking", "Laboratory Procedures"],
+          "interests": ["Sciences", "Laboratory Work", "Research", "Healthcare", "Analysis"],
+          "universities": ["University of Nairobi", "Kenyatta University", "KMTC", "JKUAT"],
+          "courses": ["Bachelor of Science in Laboratory Technology", "Diploma in Medical Laboratory"],
+          "career_outlook": "Good demand in healthcare and research facilities",
+          "average_salary": "KES 45,000 - 120,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Hospitality and Tourism": {
+      "description": "Careers in hotel management, tourism, travel, and hospitality services",
+      "icon": "🏨",
+      "careers": [
+        {
+          "career": "Hotel Manager",
+          "description": "Oversee hotel operations, manage staff, and ensure guest satisfaction",
+          "required_subjects": ["Business Studies", "English"],
+          "required_grades": {
+            "English": "C+",
+            "Business Studies": "C+",
+            "Mathematics": "C+"
+          },
+          "skills": ["Customer Service", "Management", "Communication", "Organization", "Problem Solving"],
+          "interests": ["Hospitality", "Management", "Customer Service", "Tourism", "Business"],
+          "universities": ["Kenyatta University", "Moi University", "Mount Kenya University", "Utalii College"],
+          "courses": ["Bachelor of Science in Hospitality Management", "Diploma in Hotel Management"],
+          "career_outlook": "Growing opportunities in Kenya's tourism sector",
+          "average_salary": "KES 50,000 - 150,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Tour Guide",
+          "description": "Lead tourists on tours, provide information about attractions, and ensure visitor satisfaction",
+          "required_subjects": ["Geography", "History"],
+          "required_grades": {
+            "English": "C+",
+            "Geography": "C+",
+            "History": "C-"
+          },
+          "skills": ["Communication", "Public Speaking", "Customer Service", "Knowledge of Local Attractions"],
+          "interests": ["Tourism", "Travel", "History", "Culture", "Nature"],
+          "universities": ["Utalii College", "Kenyatta University", "Moi University"],
+          "courses": ["Diploma in Tour Guiding", "Certificate in Tour Guiding"],
+          "career_outlook": "Seasonal but growing with tourism recovery",
+          "average_salary": "KES 25,000 - 80,000",
+          "duration": "1-2 years"
+        }
+      ]
+    },
+    "Information Technology": {
+      "description": "Careers in computing, information systems, cybersecurity, and data science",
+      "icon": "💻",
+      "careers": [
+        {
+          "career": "Data Scientist",
+          "description": "Analyze and interpret complex data to help organizations make informed decisions",
+          "required_subjects": ["Mathematics", "Computer Studies"],
+          "required_grades": {
+            "Mathematics": "B+",
+            "Computer Studies": "B",
+            "Physics": "B-"
+          },
+          "skills": ["Data Analysis", "Statistics", "Programming", "Machine Learning", "Analytical Thinking"],
+          "interests": ["Technology", "Data", "Mathematics", "Research", "Analysis"],
+          "universities": ["Strathmore University", "JKUAT", "University of Nairobi", "Kenyatta University"],
+          "courses": ["Bachelor of Science in Data Science", "Bachelor of Computer Science"],
+          "career_outlook": "High demand across all industries",
+          "average_salary": "KES 80,000 - 300,000+",
+          "duration": "4 years"
+        },
+        {
+          "career": "Cybersecurity Analyst",
+          "description": "Protect computer systems and networks from cyber threats and security breaches",
+          "required_subjects": ["Mathematics", "Computer Studies", "Physics"],
+          "required_grades": {
+            "Mathematics": "B",
+            "Computer Studies": "B",
+            "Physics": "C+"
+          },
+          "skills": ["Technical Skills", "Analytical Thinking", "Problem Solving", "Security Knowledge", "Attention to Detail"],
+          "interests": ["Technology", "Security", "Computers", "Problem Solving", "Networks"],
+          "universities": ["JKUAT", "Strathmore University", "University of Nairobi", "KCA University"],
+          "courses": ["Bachelor of Science in Cybersecurity", "Bachelor of Computer Security"],
+          "career_outlook": "Growing importance with increasing cyber threats",
+          "average_salary": "KES 70,000 - 250,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Law and Legal Studies": {
+      "description": "Careers in law, legal practice, judiciary, and legal advisory services",
+      "icon": "⚖️",
+      "careers": [
+        {
+          "career": "Lawyer",
+          "description": "Provide legal advice, represent clients in court, and draft legal documents",
+          "required_subjects": ["English", "History"],
+          "required_grades": {
+            "English": "B+",
+            "History": "B-",
+            "Mathematics": "C+"
+          },
+          "skills": ["Analytical Thinking", "Communication", "Research", "Persuasion", "Writing"],
+          "interests": ["Law", "Justice", "Politics", "Debate", "Research"],
+          "universities": ["University of Nairobi", "Moi University", "Kenyatta University", "Mount Kenya University", "Strathmore University"],
+          "courses": ["Bachelor of Laws", "Postgraduate Diploma in Law"],
+          "career_outlook": "Competitive field with opportunities in various legal sectors",
+          "average_salary": "KES 70,000 - 400,000+",
+          "duration": "4 years + Law School"
+        },
+        {
+          "career": "Legal Advisor",
+          "description": "Provide legal guidance to organizations, ensure compliance with laws and regulations",
+          "required_subjects": ["English", "History"],
+          "required_grades": {
+            "English": "B",
+            "History": "C+"
+          },
+          "skills": ["Legal Knowledge", "Communication", "Analytical Thinking", "Research", "Advisory Skills"],
+          "interests": ["Law", "Business", "Compliance", "Regulations", "Corporate Affairs"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Strathmore University"],
+          "courses": ["Bachelor of Laws", "Bachelor of Arts in Law"],
+          "career_outlook": "Good opportunities in corporate and public sectors",
+          "average_salary": "KES 60,000 - 200,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Social Sciences": {
+      "description": "Careers in sociology, psychology, anthropology, and social research",
+      "icon": "👥",
+      "careers": [
+        {
+          "career": "Psychologist",
+          "description": "Study human behavior and mental processes, provide counseling and psychological services",
+          "required_subjects": ["Biology", "Mathematics"],
+          "required_grades": {
+            "Biology": "C+",
+            "Mathematics": "C+",
+            "English": "B-"
+          },
+          "skills": ["Listening", "Analytical Thinking", "Empathy", "Research", "Communication"],
+          "interests": ["Psychology", "Human Behavior", "Research", "Counseling", "Mental Health"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "Mount Kenya University", "Daystar University"],
+          "courses": ["Bachelor of Arts in Psychology", "Bachelor of Science in Psychology"],
+          "career_outlook": "Growing awareness of mental health increasing demand",
+          "average_salary": "KES 50,000 - 150,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Social Worker",
+          "description": "Help individuals and communities overcome challenges and improve their quality of life",
+          "required_subjects": [],
+          "required_grades": {
+            "English": "C+",
+            "Kiswahili": "C+"
+          },
+          "skills": ["Empathy", "Communication", "Problem Solving", "Counseling", "Community Service"],
+          "interests": ["Community Service", "Helping People", "Social Justice", "Psychology", "Development"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "Daystar University", "Tangaza University"],
+          "courses": ["Bachelor of Social Work", "Bachelor of Arts in Sociology", "Bachelor of Arts in Community Development"],
+          "career_outlook": "Growing demand in NGOs and government agencies",
+          "average_salary": "KES 35,000 - 100,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Architecture and Construction": {
+      "description": "Careers in architecture, construction management, and urban planning",
+      "icon": "🏗️",
+      "careers": [
+        {
+          "career": "Architect",
+          "description": "Design buildings and structures, create architectural plans, and oversee construction",
+          "required_subjects": ["Mathematics", "Physics", "Art and Design"],
+          "required_grades": {
+            "Mathematics": "B",
+            "Physics": "C+",
+            "Art and Design": "C+"
+          },
+          "skills": ["Design", "Creativity", "Technical Drawing", "Spatial Awareness", "Mathematics"],
+          "interests": ["Design", "Architecture", "Construction", "Art", "Mathematics"],
+          "universities": ["University of Nairobi", "JKUAT", "Technical University of Kenya"],
+          "courses": ["Bachelor of Architecture", "Bachelor of Arts in Architecture"],
+          "career_outlook": "Good opportunities in construction and real estate sectors",
+          "average_salary": "KES 70,000 - 250,000",
+          "duration": "5 years"
+        },
+        {
+          "career": "Quantity Surveyor",
+          "description": "Manage construction costs, prepare tender documents, and ensure project budgets",
+          "required_subjects": ["Mathematics", "Physics"],
+          "required_grades": {
+            "Mathematics": "B",
+            "Physics": "C+",
+            "English": "C+"
+          },
+          "skills": ["Mathematics", "Analytical Thinking", "Attention to Detail", "Cost Management", "Technical Knowledge"],
+          "interests": ["Construction", "Mathematics", "Business", "Management", "Architecture"],
+          "universities": ["University of Nairobi", "JKUAT", "Technical University of Kenya"],
+          "courses": ["Bachelor of Quantity Surveying", "Bachelor of Science in Construction Management"],
+          "career_outlook": "Essential for all construction projects",
+          "average_salary": "KES 60,000 - 200,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Creative Arts and Design": {
+      "description": "Careers in visual arts, graphic design, fashion, and creative industries",
+      "icon": "🎨",
+      "careers": [
+        {
+          "career": "Graphic Designer",
+          "description": "Create visual concepts to communicate ideas through digital and print media",
+          "required_subjects": ["Art and Design", "Computer Studies"],
+          "required_grades": {
+            "English": "C+",
+            "Art and Design": "C+"
+          },
+          "skills": ["Creativity", "Technical Skills", "Communication", "Design", "Software Proficiency"],
+          "interests": ["Art", "Design", "Technology", "Creativity", "Media"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Technical University of Kenya", "Daystar University"],
+          "courses": ["Bachelor of Arts in Design", "Bachelor of Arts in Graphic Design", "Bachelor of Arts in Fine Art"],
+          "career_outlook": "Growing demand in digital media and advertising",
+          "average_salary": "KES 40,000 - 120,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Fashion Designer",
+          "description": "Create clothing and accessory designs, follow fashion trends, and manage fashion shows",
+          "required_subjects": ["Art and Design", "Home Science"],
+          "required_grades": {
+            "Art and Design": "C+",
+            "Home Science": "C+"
+          },
+          "skills": ["Creativity", "Design", "Sewing", "Trend Analysis", "Business Skills"],
+          "interests": ["Fashion", "Design", "Art", "Creativity", "Style"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Technical University of Kenya"],
+          "courses": ["Bachelor of Arts in Fashion Design", "Diploma in Fashion Design"],
+          "career_outlook": "Competitive but growing fashion industry in Kenya",
+          "average_salary": "KES 35,000 - 150,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Media and Communication": {
+      "description": "Careers in journalism, broadcasting, public relations, and media production",
+      "icon": "📺",
+      "careers": [
+        {
+          "career": "Broadcast Journalist",
+          "description": "Research, write, and present news stories for television and radio broadcasts",
+          "required_subjects": ["English", "History"],
+          "required_grades": {
+            "English": "B",
+            "History": "C+"
+          },
+          "skills": ["Communication", "Public Speaking", "Research", "Writing", "Presentation"],
+          "interests": ["Media", "Journalism", "Current Affairs", "Broadcasting", "Communication"],
+          "universities": ["University of Nairobi", "Daystar University", "Kenyatta University", "USIU Africa"],
+          "courses": ["Bachelor of Arts in Journalism", "Bachelor of Arts in Mass Communication"],
+          "career_outlook": "Opportunities in growing media industry",
+          "average_salary": "KES 40,000 - 120,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Public Relations Officer",
+          "description": "Manage organization's public image, handle media relations, and coordinate communications",
+          "required_subjects": ["English", "Business Studies"],
+          "required_grades": {
+            "English": "B",
+            "Business Studies": "C+"
+          },
+          "skills": ["Communication", "Writing", "Media Relations", "Crisis Management", "Networking"],
+          "interests": ["Communication", "Media", "Public Relations", "Business", "Marketing"],
+          "universities": ["University of Nairobi", "Daystar University", "Kenyatta University", "Mount Kenya University"],
+          "courses": ["Bachelor of Arts in Public Relations", "Bachelor of Arts in Communication"],
+          "career_outlook": "Important for all organizations' public image",
+          "average_salary": "KES 45,000 - 130,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Public Service and Administration": {
+      "description": "Careers in government, public administration, and civil service",
+      "icon": "🏛️",
+      "careers": [
+        {
+          "career": "Public Administrator",
+          "description": "Manage public programs and services, implement government policies",
+          "required_subjects": ["History", "Geography"],
+          "required_grades": {
+            "English": "B-",
+            "History": "C+",
+            "Mathematics": "C+"
+          },
+          "skills": ["Leadership", "Communication", "Policy Analysis", "Management", "Public Relations"],
+          "interests": ["Politics", "Governance", "Public Service", "Policy", "Management"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University", "Mount Kenya University"],
+          "courses": ["Bachelor of Arts in Public Administration", "Bachelor of Arts in Political Science"],
+          "career_outlook": "Stable career in government and NGOs",
+          "average_salary": "KES 50,000 - 150,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Diplomat",
+          "description": "Represent Kenya in international relations, negotiate treaties, and protect citizens abroad",
+          "required_subjects": ["History", "Geography"],
+          "required_grades": {
+            "English": "B+",
+            "History": "B-",
+            "Geography": "C+"
+          },
+          "skills": ["Communication", "Negotiation", "Cultural Awareness", "Languages", "Diplomacy"],
+          "interests": ["International Relations", "Politics", "Languages", "Travel", "Diplomacy"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University"],
+          "courses": ["Bachelor of Arts in International Relations", "Bachelor of Arts in Diplomacy"],
+          "career_outlook": "Competitive but prestigious foreign service career",
+          "average_salary": "KES 80,000 - 300,000+",
+          "duration": "4 years + foreign service exam"
+        }
+      ]
+    },
+    "Transportation and Logistics": {
+      "description": "Careers in transport management, logistics, supply chain, and distribution",
+      "icon": "🚚",
+      "careers": [
+        {
+          "career": "Logistics Manager",
+          "description": "Coordinate transportation, storage, and distribution of goods and materials",
+          "required_subjects": ["Mathematics", "Business Studies"],
+          "required_grades": {
+            "Mathematics": "C+",
+            "Business Studies": "C+",
+            "English": "C+"
+          },
+          "skills": ["Organization", "Analytical Thinking", "Supply Chain Management", "Problem Solving", "Coordination"],
+          "interests": ["Business", "Transportation", "Management", "Supply Chain", "Coordination"],
+          "universities": ["JKUAT", "University of Nairobi", "Kenyatta University", "Mount Kenya University"],
+          "courses": ["Bachelor of Science in Supply Chain Management", "Bachelor of Commerce"],
+          "career_outlook": "Growing importance in global trade",
+          "average_salary": "KES 55,000 - 180,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Transport Manager",
+          "description": "Manage transportation operations, fleet maintenance, and driver coordination",
+          "required_subjects": ["Mathematics", "Business Studies"],
+          "required_grades": {
+            "Mathematics": "C+",
+            "Business Studies": "C+"
+          },
+          "skills": ["Management", "Organization", "Logistics", "Problem Solving", "Coordination"],
+          "interests": ["Transportation", "Management", "Logistics", "Business", "Operations"],
+          "universities": ["JKUAT", "University of Nairobi", "Technical University of Kenya"],
+          "courses": ["Bachelor of Science in Transport Management", "Diploma in Transport Management"],
+          "career_outlook": "Essential for all transportation companies",
+          "average_salary": "KES 50,000 - 150,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Manufacturing and Processing": {
+      "description": "Careers in industrial production, manufacturing, and quality control",
+      "icon": "🏭",
+      "careers": [
+        {
+          "career": "Production Manager",
+          "description": "Oversee manufacturing processes, manage production teams, and ensure quality control",
+          "required_subjects": ["Mathematics", "Physics", "Chemistry"],
+          "required_grades": {
+            "Mathematics": "C+",
+            "Physics": "C+",
+            "Chemistry": "C+"
+          },
+          "skills": ["Management", "Technical Knowledge", "Quality Control", "Problem Solving", "Organization"],
+          "interests": ["Manufacturing", "Management", "Technology", "Production", "Industry"],
+          "universities": ["JKUAT", "University of Nairobi", "Moi University", "Technical University of Kenya"],
+          "courses": ["Bachelor of Science in Production Engineering", "Bachelor of Science in Industrial Technology"],
+          "career_outlook": "Important for Kenya's manufacturing sector growth",
+          "average_salary": "KES 60,000 - 200,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Quality Control Manager",
+          "description": "Ensure products meet quality standards, implement quality control systems",
+          "required_subjects": ["Mathematics", "Chemistry"],
+          "required_grades": {
+            "Mathematics": "C+",
+            "Chemistry": "C+"
+          },
+          "skills": ["Attention to Detail", "Analytical Thinking", "Quality Standards", "Problem Solving", "Technical Knowledge"],
+          "interests": ["Manufacturing", "Quality", "Standards", "Production", "Industry"],
+          "universities": ["JKUAT", "University of Nairobi", "Kenyatta University"],
+          "courses": ["Bachelor of Science in Quality Control", "Bachelor of Science in Industrial Chemistry"],
+          "career_outlook": "Essential for manufacturing and export industries",
+          "average_salary": "KES 55,000 - 160,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Security Services": {
+      "description": "Careers in national security, police service, and private security",
+      "icon": "🛡️",
+      "careers": [
+        {
+          "career": "Police Officer",
+          "description": "Maintain law and order, prevent and investigate crimes, protect citizens",
+          "required_subjects": [],
+          "required_grades": {
+            "English": "C-",
+            "Kiswahili": "C-",
+            "Mathematics": "D+"
+          },
+          "skills": ["Communication", "Physical Fitness", "Problem Solving", "Crisis Management", "Law Knowledge"],
+          "interests": ["Security", "Law Enforcement", "Public Service", "Justice", "Community Service"],
+          "universities": ["Kenya Police College", "University of Nairobi"],
+          "courses": ["Diploma in Police Studies", "Bachelor of Arts in Criminology"],
+          "career_outlook": "Stable government career with good benefits",
+          "average_salary": "KES 40,000 - 120,000",
+          "duration": "2-4 years"
+        },
+        {
+          "career": "Cybersecurity Specialist",
+          "description": "Protect digital information and systems from cyber threats and attacks",
+          "required_subjects": ["Mathematics", "Computer Studies", "Physics"],
+          "required_grades": {
+            "Mathematics": "B",
+            "Computer Studies": "B",
+            "Physics": "C+"
+          },
+          "skills": ["Technical Skills", "Analytical Thinking", "Security Protocols", "Problem Solving", "Attention to Detail"],
+          "interests": ["Technology", "Security", "Computers", "Problem Solving", "Cyber Crime Prevention"],
+          "universities": ["JKUAT", "Strathmore University", "University of Nairobi", "KCA University"],
+          "courses": ["Bachelor of Science in Cybersecurity", "Bachelor of Computer Security"],
+          "career_outlook": "Critical for all organizations in digital age",
+          "average_salary": "KES 70,000 - 250,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Environmental Studies": {
+      "description": "Careers in environmental conservation, climate science, and sustainability",
+      "icon": "🌍",
+      "careers": [
+        {
+          "career": "Environmental Scientist",
+          "description": "Study environmental problems and develop solutions to protect natural resources",
+          "required_subjects": ["Biology", "Chemistry", "Geography"],
+          "required_grades": {
+            "Biology": "C+",
+            "Chemistry": "C+",
+            "Mathematics": "C+",
+            "Geography": "C+"
+          },
+          "skills": ["Research", "Analytical Thinking", "Problem Solving", "Data Analysis", "Field Work"],
+          "interests": ["Environment", "Sciences", "Research", "Conservation", "Ecology"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Egerton University", "Moi University", "Maseno University"],
+          "courses": ["Bachelor of Environmental Science", "Bachelor of Science in Environmental Studies"],
+          "career_outlook": "Growing importance of environmental conservation",
+          "average_salary": "KES 45,000 - 120,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Climate Change Analyst",
+          "description": "Research climate patterns, analyze climate data, and develop climate change mitigation strategies",
+          "required_subjects": ["Geography", "Mathematics", "Physics"],
+          "required_grades": {
+            "Geography": "C+",
+            "Mathematics": "C+",
+            "Physics": "C+"
+          },
+          "skills": ["Research", "Data Analysis", "Climate Science", "Analytical Thinking", "Policy Analysis"],
+          "interests": ["Environment", "Climate", "Research", "Science", "Sustainability"],
+          "universities": ["University of Nairobi", "Kenyatta University", "Moi University"],
+          "courses": ["Bachelor of Science in Meteorology", "Bachelor of Environmental Science"],
+          "career_outlook": "Increasing importance with climate change concerns",
+          "average_salary": "KES 50,000 - 140,000",
+          "duration": "4 years"
+        }
+      ]
+    },
+    "Sports and Recreation": {
+      "description": "Careers in sports management, coaching, fitness, and recreation",
+      "icon": "⚽",
+      "careers": [
+        {
+          "career": "Sports Manager",
+          "description": "Manage sports teams, organize sporting events, and handle sports marketing",
+          "required_subjects": ["Business Studies"],
+          "required_grades": {
+            "English": "C+",
+            "Business Studies": "C+"
+          },
+          "skills": ["Management", "Communication", "Organization", "Marketing", "Sports Knowledge"],
+          "interests": ["Sports", "Management", "Business", "Events", "Athletics"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Moi University"],
+          "courses": ["Bachelor of Science in Sports Management", "Bachelor of Commerce"],
+          "career_outlook": "Growing sports industry in Kenya",
+          "average_salary": "KES 45,000 - 150,000",
+          "duration": "4 years"
+        },
+        {
+          "career": "Physical Education Teacher",
+          "description": "Teach physical education, coach sports teams, and promote fitness in schools",
+          "required_subjects": ["Biology"],
+          "required_grades": {
+            "Biology": "C+",
+            "English": "C+"
+          },
+          "skills": ["Coaching", "Teaching", "Physical Fitness", "Sports Knowledge", "Motivation"],
+          "interests": ["Sports", "Teaching", "Fitness", "Coaching", "Education"],
+          "universities": ["Kenyatta University", "University of Nairobi", "Egerton University"],
+          "courses": ["Bachelor of Education (Physical Education)", "Diploma in Physical Education"],
+          "career_outlook": "Opportunities in schools and sports academies",
+          "average_salary": "KES 40,000 - 100,000",
+          "duration": "4 years"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "version": "2.0.0",
+    "last_updated": "2024-01-15",
+    "source": "Kenya Universities and Colleges Central Placement Service (KUCCPS)",
+    "total_careers": 45,
+    "total_clusters": 20,
+    "kuccps_clusters": [
+      "Medicine and Health Sciences",
+      "Engineering and Technology", 
+      "Business and Economics",
+      "Education and Training",
+      "Agriculture and Natural Resources",
+      "Arts and Humanities",
+      "Sciences",
+      "Hospitality and Tourism",
+      "Information Technology",
+      "Law and Legal Studies",
+      "Social Sciences",
+      "Architecture and Construction",
+      "Creative Arts and Design",
+      "Media and Communication",
+      "Public Service and Administration",
+      "Transportation and Logistics",
+      "Manufacturing and Processing",
+      "Security Services",
+      "Environmental Studies",
+      "Sports and Recreation"
+    ]
+  }
+}
