@@ -23,7 +23,7 @@ def main():
         
         with col1:
             st.header("📖 KCSE Subjects & Grades")
-            subjects_grades = get_subject_grades()
+            subjects_grades = display_subjects_by_official_groupings()
             
             st.header("🎯 Skills & Interests")
             skills_interests = get_skills_interests()
@@ -45,7 +45,7 @@ def main():
             """)
         
         # Submit button
-        submitted = st.form_submit_button("🚀 Generate Career Report", type="primary", width='stretch')
+        submitted = st.form_submit_button("🚀 Generate Career Report", type="primary", use_container_width=True)
         
         if submitted:
             if validate_inputs(subjects_grades, skills_interests, student_info):
@@ -61,47 +61,209 @@ def main():
             else:
                 st.error("❌ Please fix the errors above before proceeding.")
 
-def get_subject_grades():
-    """Get KCSE subjects and grades from user"""
-    subjects = {}
+def display_subjects_by_official_groupings():
+    """Display subjects organized by official KCSE groupings"""
     
-    st.subheader("Mandatory Subjects")
+    st.subheader("📚 Complete KCSE Subject Grades")
+    subjects_grades = {}
+    
+    # Create columns for better organization
     col1, col2, col3 = st.columns(3)
+    
     with col1:
-        subjects['Mathematics'] = st.selectbox("Mathematics*", ["Select Grade", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
+        st.markdown("### 📘 Group I - Compulsory Subjects")
+        st.markdown("**All three subjects are mandatory**")
+        
+        subjects_grades['English'] = st.selectbox(
+            "English*", 
+            ["Select Grade", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0,
+            help="Mandatory subject"
+        )
+        
+        subjects_grades['Kiswahili'] = st.selectbox(
+            "Kiswahili*", 
+            ["Select Grade", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0,
+            help="Mandatory subject"
+        )
+        
+        subjects_grades['Mathematics'] = st.selectbox(
+            "Mathematics*", 
+            ["Select Grade", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0,
+            help="Mandatory subject"
+        )
+        
+        st.markdown("### 🔬 Group II - Sciences")
+        st.markdown("**Select at least 2 science subjects**")
+        
+        subjects_grades['Biology'] = st.selectbox(
+            "Biology", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Physics'] = st.selectbox(
+            "Physics", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Chemistry'] = st.selectbox(
+            "Chemistry", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+
     with col2:
-        subjects['English'] = st.selectbox("English*", ["Select Grade", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
+        st.markdown("### 🌍 Group III - Humanities")
+        st.markdown("**Select at least 1 humanity subject**")
+        
+        subjects_grades['History and Government'] = st.selectbox(
+            "History and Government", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Geography'] = st.selectbox(
+            "Geography", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Christian Religious Education'] = st.selectbox(
+            "Christian Religious Education", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Islamic Religious Education'] = st.selectbox(
+            "Islamic Religious Education", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Hindu Religious Education'] = st.selectbox(
+            "Hindu Religious Education", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        st.markdown("### 💼 Group IV - Technical Subjects")
+        
+        subjects_grades['Business Studies'] = st.selectbox(
+            "Business Studies", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['French'] = st.selectbox(
+            "French", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['German'] = st.selectbox(
+            "German", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+
     with col3:
-        subjects['Kiswahili'] = st.selectbox("Kiswahili*", ["Select Grade", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
+        st.markdown("### 🔧 Group IV - Applied & Other Subjects")
+        
+        subjects_grades['Agriculture'] = st.selectbox(
+            "Agriculture", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Computer Studies'] = st.selectbox(
+            "Computer Studies", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Home Science'] = st.selectbox(
+            "Home Science", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Art and Design'] = st.selectbox(
+            "Art and Design", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Music'] = st.selectbox(
+            "Music", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Arabic'] = st.selectbox(
+            "Arabic", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        subjects_grades['Kenya Sign Language'] = st.selectbox(
+            "Kenya Sign Language", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
+        
+        # Technical subjects in a compact layout
+        st.markdown("#### Technical & Applied")
+        tech_col1, tech_col2 = st.columns(2)
+        
+        with tech_col1:
+            subjects_grades['Woodwork'] = st.selectbox(
+                "Woodwork", 
+                ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+                index=0
+            )
+            
+            subjects_grades['Metalwork'] = st.selectbox(
+                "Metalwork", 
+                ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+                index=0
+            )
+            
+            subjects_grades['Electricity'] = st.selectbox(
+                "Electricity", 
+                ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+                index=0
+            )
+        
+        with tech_col2:
+            subjects_grades['Power Mechanics'] = st.selectbox(
+                "Power Mechanics", 
+                ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+                index=0
+            )
+            
+            subjects_grades['Building Construction'] = st.selectbox(
+                "Building Construction", 
+                ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+                index=0
+            )
+            
+            subjects_grades['Drawing and Design'] = st.selectbox(
+                "Drawing and Design", 
+                ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+                index=0
+            )
+        
+        subjects_grades['Aviation'] = st.selectbox(
+            "Aviation", 
+            ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], 
+            index=0
+        )
     
-    st.subheader("Science Subjects (Choose at least 2)")
-    sci_col1, sci_col2, sci_col3 = st.columns(3)
-    with sci_col1:
-        subjects['Biology'] = st.selectbox("Biology", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    with sci_col2:
-        subjects['Chemistry'] = st.selectbox("Chemistry", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    with sci_col3:
-        subjects['Physics'] = st.selectbox("Physics", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    
-    st.subheader("Humanity Subjects (Choose at least 1)")
-    hum_col1, hum_col2, hum_col3 = st.columns(3)
-    with hum_col1:
-        subjects['History'] = st.selectbox("History", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    with hum_col2:
-        subjects['Geography'] = st.selectbox("Geography", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    with hum_col3:
-        subjects['Religious Education'] = st.selectbox("Religious Education", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    
-    st.subheader("Technical & Other Subjects (Optional)")
-    tech_col1, tech_col2 = st.columns(2)
-    with tech_col1:
-        subjects['Computer Studies'] = st.selectbox("Computer Studies", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-        subjects['Agriculture'] = st.selectbox("Agriculture", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    with tech_col2:
-        subjects['Business Studies'] = st.selectbox("Business Studies", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-        subjects['Home Science'] = st.selectbox("Home Science", ["Not Taken", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E"], index=0)
-    
-    return subjects
+    return subjects_grades
 
 def get_skills_interests():
     """Get skills and interests from user"""
@@ -145,39 +307,40 @@ def get_student_info():
     
     st.subheader("Personal Details")
     student_info['name'] = st.text_input("Full Name*", placeholder="Enter your full name")
-    student_info['phone'] = st.text_input("Phone Number*", placeholder="07XXXXXXXX", value="0723349693")
+    student_info['phone'] = st.text_input("Phone Number*", placeholder="07XXXXXXXX")
     student_info['email'] = st.text_input("Email Address", placeholder="your.email@example.com")
     
     return student_info
 
 def validate_inputs(subjects_grades, skills_interests, student_info):
-    """Validate all user inputs"""
+    """Validate all user inputs according to KCSE requirements"""
     errors = []
     
-    # Check mandatory subjects
+    # Check mandatory subjects (Group I)
     mandatory_subjects = ['Mathematics', 'English', 'Kiswahili']
     for subject in mandatory_subjects:
         if subjects_grades[subject] == "Select Grade":
-            errors.append(f"❌ {subject} is a mandatory subject!")
+            errors.append(f"❌ {subject} is a mandatory subject from Group I!")
     
-    # Check sciences (at least 2)
-    science_subjects = ['Biology', 'Chemistry', 'Physics']
+    # Check sciences (Group II - at least 2)
+    science_subjects = ['Biology', 'Physics', 'Chemistry']
     sciences_taken = [sub for sub in science_subjects if subjects_grades[sub] != "Not Taken"]
     if len(sciences_taken) < 2:
-        errors.append("❌ You must select at least 2 Science subjects!")
+        errors.append("❌ You must select at least 2 Science subjects from Group II!")
     
-    # Check humanities (at least 1)
-    humanity_subjects = ['History', 'Geography', 'Religious Education']
+    # Check humanities (Group III - at least 1)
+    humanity_subjects = ['History and Government', 'Geography', 'Christian Religious Education', 
+                        'Islamic Religious Education', 'Hindu Religious Education']
     humanities_taken = [sub for sub in humanity_subjects if subjects_grades[sub] != "Not Taken"]
     if len(humanities_taken) < 1:
-        errors.append("❌ You must select at least 1 Humanity subject!")
+        errors.append("❌ You must select at least 1 Humanity subject from Group III!")
     
     # Check total subjects (7-9)
     all_subjects_taken = [sub for sub, grade in subjects_grades.items() if grade not in ["Not Taken", "Select Grade"]]
     if len(all_subjects_taken) < 7:
-        errors.append("❌ You must have at least 7 subjects!")
+        errors.append(f"❌ Only {len(all_subjects_taken)} subjects selected. Minimum 7 required!")
     if len(all_subjects_taken) > 9:
-        errors.append("❌ You can only have maximum 9 subjects!")
+        errors.append(f"❌ {len(all_subjects_taken)} subjects selected. Maximum 9 allowed!")
     
     # Check skills and interests
     if len(skills_interests['skills']) == 0:

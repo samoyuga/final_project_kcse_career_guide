@@ -42,6 +42,18 @@ def main():
         border-radius: 10px;
         margin: 1rem 0;
     }
+    .requirement-met {
+        color: #28a745;
+        font-weight: bold;
+    }
+    .requirement-not-met {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    .requirement-partial {
+        color: #ffc107;
+        font-weight: bold;
+    }
     </style>
     """, unsafe_allow_html=True)
     
@@ -131,23 +143,23 @@ def main():
                 st.plotly_chart(fig, width='stretch')
                 
             with col2:
-                # Requirements
-                st.subheader("📚 Requirements")
-                if career['required_subjects']:
-                    st.write("**Required Subjects:**")
-                    for subject in career['required_subjects']:
-                        required_grade = career['required_grades'].get(subject, 'C+')
-                        user_grade = subjects_grades.get(subject, 'Not Taken')
-                        status = "✅" if user_grade != "Not Taken" and user_grade != "Select Grade" else "❌"
-                        st.write(f"{status} {subject}: {required_grade}+ (You: {user_grade})")
+                # Requirements - FIXED SECTION
+                st.subheader("📚 Subject Requirements")
+                display_subject_requirements(career, subjects_grades)
                 
                 # Skills alignment
-                st.write("**Key Skills:**")
+                st.subheader("🛠️ Skills Alignment")
                 user_skills = set(skills_interests.get('skills', []))
                 career_skills = set(career.get('skills', []))
-                for skill in career_skills:
-                    status = "✅" if skill in user_skills else "⚪"
-                    st.write(f"{status} {skill}")
+                
+                if career_skills:
+                    for skill in career_skills:
+                        if skill in user_skills:
+                            st.write(f"✅ **{skill}** - You have this skill")
+                        else:
+                            st.write(f"⚪ {skill} - Consider developing")
+                else:
+                    st.info("No specific skills requirements listed.")
             
             # University and Course Information
             st.subheader("🎓 Educational Pathway")
@@ -343,6 +355,310 @@ def grade_to_points(grade):
     }
     return grade_points.get(grade, 0)
 
+def get_cluster_requirements(cluster_name):
+    """Get the specific 4 requirements for a cluster with exact subject groupings"""
+    
+    # Define subject groups
+    GROUP_I = ['English', 'Kiswahili', 'Mathematics']
+    GROUP_II = ['Biology', 'Physics', 'Chemistry']
+    GROUP_III = ['History', 'Geography', 'CRE', 'IRE', 'HRE']
+    GROUP_IV = ['Home Science', 'Art & Design', 'Agriculture', 'Woodwork', 'Metalwork', 
+                'Building Construction', 'Power Mechanics', 'Electricity', 'Drawing & Design', 
+                'Aviation', 'Computer Studies']
+    GROUP_V = ['French', 'German', 'Arabic', 'Kenya Sign Language', 'Music', 'Business Studies']
+    
+    # Extract cluster ID from the cluster name
+    cluster_id = None
+    if "Cluster 1:" in cluster_name:
+        cluster_id = 1
+    elif "Cluster 2:" in cluster_name:
+        cluster_id = 2
+    elif "Cluster 3:" in cluster_name:
+        cluster_id = 3
+    elif "Cluster 4:" in cluster_name:
+        cluster_id = 4
+    elif "Cluster 5:" in cluster_name:
+        cluster_id = 5
+    elif "Cluster 6:" in cluster_name:
+        cluster_id = 6
+    elif "Cluster 7:" in cluster_name:
+        cluster_id = 7
+    elif "Cluster 8:" in cluster_name:
+        cluster_id = 8
+    elif "Cluster 9:" in cluster_name:
+        cluster_id = 9
+    elif "Cluster 10:" in cluster_name:
+        cluster_id = 10
+    elif "Cluster 11:" in cluster_name:
+        cluster_id = 11
+    elif "Cluster 12:" in cluster_name:
+        cluster_id = 12
+    elif "Cluster 13:" in cluster_name:
+        cluster_id = 13
+    elif "Cluster 14:" in cluster_name:
+        cluster_id = 14
+    elif "Cluster 15:" in cluster_name:
+        cluster_id = 15
+    elif "Cluster 16:" in cluster_name:
+        cluster_id = 16
+    elif "Cluster 17:" in cluster_name:
+        cluster_id = 17
+    elif "Cluster 18:" in cluster_name:
+        cluster_id = 18
+    elif "Cluster 19:" in cluster_name:
+        cluster_id = 19
+    elif "Cluster 20:" in cluster_name:
+        cluster_id = 20
+    
+    # Return requirements based on cluster ID - ALL GRADES CORRECTED TO 'C+'
+    requirements = {
+        1: {  # LAW
+            'English': {'subjects': ['English'], 'min_grade': 'B'},
+            'Any Group II': {'subjects': GROUP_II, 'min_grade': 'C+'},
+            'Any Group III': {'subjects': GROUP_III, 'min_grade': 'C+'},
+            'Any Group III/IV/V': {'subjects': GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        2: {  # BUSINESS & HOSPITALITY
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Any Group II': {'subjects': GROUP_II, 'min_grade': 'C+'},
+            'Any Group III': {'subjects': GROUP_III, 'min_grade': 'C+'},
+            'Any Group III/IV/V': {'subjects': GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        3: {  # SOCIAL SCIENCES, MEDIA, ARTS
+            'Group II/III 1': {'subjects': GROUP_II + GROUP_III, 'min_grade': 'C+'},
+            'Group II/III 2': {'subjects': GROUP_II + GROUP_III, 'min_grade': 'C+'},
+            'Group II/III 3': {'subjects': GROUP_II + GROUP_III, 'min_grade': 'C+'},
+            'Any Other Subject': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        4: {  # GEOSCIENCES
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Physics': {'subjects': ['Physics'], 'min_grade': 'C+'},
+            'Biology/Chemistry/Geography': {'subjects': ['Biology', 'Chemistry', 'Geography'], 'min_grade': 'C'},
+            'Any Group II/III/IV/V': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        5: {  # ENGINEERING
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Physics': {'subjects': ['Physics'], 'min_grade': 'C+'},
+            'Chemistry': {'subjects': ['Chemistry'], 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C+'}
+        },
+        6: {  # ARCHITECTURE & CONSTRUCTION
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Physics': {'subjects': ['Physics'], 'min_grade': 'C+'},
+            'Any Group III': {'subjects': GROUP_III, 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C+'}
+        },
+        7: {  # COMPUTING & IT
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Physics': {'subjects': ['Physics'], 'min_grade': 'C+'},
+            'Any Group II/III': {'subjects': GROUP_II + GROUP_III, 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C'}
+        },
+        8: {  # AGRIBUSINESS
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C'},
+            'Biology': {'subjects': ['Biology'], 'min_grade': 'C'},
+            'Chemistry/Physics/Agriculture': {'subjects': ['Chemistry', 'Physics', 'Agriculture'], 'min_grade': 'C'},
+            'Any Group II/III/IV/V': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        9: {  # GENERAL SCIENCES
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C'},
+            'Any Group II': {'subjects': GROUP_II, 'min_grade': 'C'},
+            'Any Group III': {'subjects': GROUP_III, 'min_grade': 'C'},
+            'Any Group II/III/IV/V': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        10: {  # ACTUARIAL, MATHEMATICS, ECONOMICS
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Any Group II': {'subjects': GROUP_II, 'min_grade': 'C+'},
+            'Any Group III': {'subjects': GROUP_III, 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C+'}
+        },
+        11: {  # DESIGN
+            'Chemistry': {'subjects': ['Chemistry'], 'min_grade': 'C'},
+            'Mathematics/Physics': {'subjects': ['Mathematics', 'Physics'], 'min_grade': 'C'},
+            'Biology/Home Science': {'subjects': ['Biology', 'Home Science'], 'min_grade': 'C'},
+            'Any Group III/IV/V': {'subjects': GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        12: {  # SPORTS SCIENCE
+            'Biology/General Science': {'subjects': ['Biology', 'General Science'], 'min_grade': 'C+'},
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Any Group II/III': {'subjects': GROUP_II + GROUP_III, 'min_grade': 'C+'},
+            'Any Group II/III/IV/V': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        13: {  # MEDICINE & HEALTH
+            'Biology': {'subjects': ['Biology'], 'min_grade': 'B'},
+            'Chemistry': {'subjects': ['Chemistry'], 'min_grade': 'B'},
+            'Mathematics/Physics': {'subjects': ['Mathematics', 'Physics'], 'min_grade': 'B'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'B'}
+        },
+        14: {  # HISTORY & ARCHAEOLOGY
+            'History': {'subjects': ['History'], 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C+'},
+            'Mathematics/Any Group II': {'subjects': ['Mathematics'] + GROUP_II, 'min_grade': 'C+'},
+            'Any Group II/IV/V': {'subjects': GROUP_II + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        15: {  # AGRICULTURE & ENVIRONMENT
+            'Biology': {'subjects': ['Biology'], 'min_grade': 'C+'},
+            'Chemistry': {'subjects': ['Chemistry'], 'min_grade': 'C+'},
+            'Mathematics/Physics/Geography': {'subjects': ['Mathematics', 'Physics', 'Geography'], 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C+'}
+        },
+        16: {  # GEOGRAPHY
+            'Geography': {'subjects': ['Geography'], 'min_grade': 'C+'},
+            'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+            'Any Group II': {'subjects': GROUP_II, 'min_grade': 'C+'},
+            'Any Group II/III/IV/V': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        17: {  # LANGUAGES
+            'French/German': {'subjects': ['French', 'German'], 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C+'},
+            'Any Group II/III': {'subjects': GROUP_II + GROUP_III, 'min_grade': 'C+'},
+            'Any Group II/III/IV/V': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        18: {  # MUSIC
+            'Music': {'subjects': ['Music'], 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C+'},
+            'Any Group II/III': {'subjects': GROUP_II + GROUP_III, 'min_grade': 'C+'},
+            'Any Group II/III/IV/V': {'subjects': GROUP_II + GROUP_III + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        },
+        19: {  # EDUCATION
+            'Teaching Subject 1': {'subjects': GROUP_I + GROUP_III + ['Social Studies', 'Home Science', 'Art & Design', 'Computer Studies', 'Music', 'French', 'German'], 'min_grade': 'C+'},
+            'Teaching Subject 2': {'subjects': GROUP_I + GROUP_III + ['Social Studies', 'Home Science', 'Art & Design', 'Computer Studies', 'Music', 'French', 'German'], 'min_grade': 'C+'},
+            'Science Subject': {'subjects': GROUP_II + ['Business Studies', 'Agriculture'], 'min_grade': 'C+'},
+            'Additional Subject': {'subjects': GROUP_II + ['Business Studies', 'Agriculture'], 'min_grade': 'C+'}
+        },
+        20: {  # RELIGIOUS STUDIES
+            'CRE/IRE/HRE': {'subjects': ['CRE', 'IRE', 'HRE'], 'min_grade': 'C+'},
+            'English/Kiswahili': {'subjects': ['English', 'Kiswahili'], 'min_grade': 'C'},
+            'Any Group III': {'subjects': GROUP_III, 'min_grade': 'C+'},
+            'Any Group II/IV/V': {'subjects': GROUP_II + GROUP_IV + GROUP_V, 'min_grade': 'C+'}
+        }
+    }
+    
+    return requirements.get(cluster_id, {
+        'Mathematics': {'subjects': ['Mathematics'], 'min_grade': 'C+'},
+        'English': {'subjects': ['English'], 'min_grade': 'C+'},
+        'Any Science': {'subjects': GROUP_II, 'min_grade': 'C+'},
+        'Any Humanities': {'subjects': GROUP_III, 'min_grade': 'C+'}
+    })
+
+def check_group_requirement(group_requirement, subjects_grades):
+    """Check if user meets 'Any Group' requirements with exact subject groupings"""
+    
+    # Define exact subject groups
+    GROUP_I = ['English', 'Kiswahili', 'Mathematics']
+    GROUP_II = ['Biology', 'Physics', 'Chemistry']
+    GROUP_III = ['History', 'Geography', 'CRE', 'IRE', 'HRE']
+    GROUP_IV = ['Home Science', 'Art & Design', 'Agriculture', 'Woodwork', 'Metalwork', 
+                'Building Construction', 'Power Mechanics', 'Electricity', 'Drawing & Design', 
+                'Aviation', 'Computer Studies']
+    GROUP_V = ['French', 'German', 'Arabic', 'Kenya Sign Language', 'Music', 'Business Studies']
+    
+    # Get user's taken subjects with decent grades (C+ and above)
+    taken_subjects = {sub: grade for sub, grade in subjects_grades.items() 
+                     if grade not in ["Not Taken", "Select Grade"] and grade_to_points(grade) >= grade_to_points('C+')}
+    
+    # Check group requirements
+    if 'Group I' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_I)
+    elif 'Group II' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_II)
+    elif 'Group III' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_III)
+    elif 'Group IV' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_IV)
+    elif 'Group V' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_V)
+    elif 'Group II/III' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_II + GROUP_III)
+    elif 'Group III/IV/V' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_III + GROUP_IV + GROUP_V)
+    elif 'Group II/III/IV/V' in group_requirement:
+        return any(subject in taken_subjects for subject in GROUP_II + GROUP_III + GROUP_IV + GROUP_V)
+    
+    return False
+
+def display_subject_requirements(career, subjects_grades):
+    """Display ONLY the 4 specific required subjects for this career"""
+    
+    # Get the cluster-specific requirements (maximum 4 subjects)
+    cluster_requirements = get_cluster_requirements(career['cluster'])
+    
+    if not cluster_requirements:
+        st.info("Specific subject requirements not available for this career.")
+        return
+    
+    # Track used subjects to avoid repetition
+    used_subjects = set()
+    requirements_met = 0
+    total_requirements = len(cluster_requirements)
+    
+    st.write("**Required Subjects:**")
+    
+    for req_name, requirement in cluster_requirements.items():
+        subject_options = requirement['subjects']
+        required_grade = requirement['min_grade']
+        
+        # Find the best matching subject (highest grade) that hasn't been used yet
+        best_subject = None
+        best_grade = None
+        best_points = -1
+        
+        for subject in subject_options:
+            # Skip if subject already used
+            if subject in used_subjects:
+                continue
+                
+            user_grade = subjects_grades.get(subject, 'Not Taken')
+            
+            if user_grade not in ["Not Taken", "Select Grade"]:
+                user_points = grade_to_points(user_grade)
+                required_points = grade_to_points(required_grade)
+                
+                # Track the subject with the highest grade that meets requirement
+                if user_points >= required_points and user_points > best_points:
+                    best_subject = subject
+                    best_grade = user_grade
+                    best_points = user_points
+                elif user_points > best_points:  # Track highest grade even if not meeting requirement
+                    best_subject = subject
+                    best_grade = user_grade
+                    best_points = user_points
+        
+        # Check if requirement is met
+        requirement_met = False
+        if best_subject and best_points >= grade_to_points(required_grade):
+            requirement_met = True
+            used_subjects.add(best_subject)
+            requirements_met += 1
+            status = "✅"
+            status_class = "requirement-met"
+            message = f"**{req_name}**: {best_subject}: {best_grade} (Required: {required_grade}+)"
+        elif best_subject:
+            # Subject available but grade not sufficient
+            used_subjects.add(best_subject)
+            status = "⚠️"
+            status_class = "requirement-partial"
+            message = f"**{req_name}**: {best_subject}: {best_grade} (Required: {required_grade}+)"
+        else:
+            # No suitable subject found
+            status = "❌"
+            status_class = "requirement-not-met"
+            # Show a few sample subjects from the group
+            sample_subjects = [s for s in subject_options if s not in used_subjects][:3]
+            subject_list = ", ".join(sample_subjects) if sample_subjects else "No suitable subjects"
+            message = f"**{req_name}**: {subject_list} (Required: {required_grade}+)"
+        
+        st.markdown(f'<span class="{status_class}">{status} {message}</span>', unsafe_allow_html=True)
+    
+    # Show overall requirement status
+    st.markdown("---")
+    if requirements_met == total_requirements:
+        st.success(f"✅ **All {total_requirements} requirements met!**")
+    elif requirements_met > 0:
+        st.warning(f"⚠️ **{requirements_met} out of {total_requirements} requirements met**")
+    else:
+        st.error(f"❌ **None of the {total_requirements} requirements met**")
+
 def generate_insights(recommendations, subjects_grades, skills_interests):
     """Generate personalized insights based on the analysis"""
     insights = []
@@ -364,15 +680,17 @@ def generate_insights(recommendations, subjects_grades, skills_interests):
     # Subject-based insights
     if top_career['subject_match'] < 70:
         weak_subjects = []
-        for subject, required_grade in top_career.get('required_grades', {}).items():
+        for subject in top_career.get('required_subjects', []):
+            required_grade = top_career['required_grades'].get(subject, 'C+')
             user_grade = subjects_grades.get(subject, 'Not Taken')
+            
             if user_grade in ["Not Taken", "Select Grade"]:
                 weak_subjects.append(f"{subject} (not taken)")
             elif grade_to_points(user_grade) < grade_to_points(required_grade):
-                weak_subjects.append(f"{subject} (needs {required_grade}+)")
+                weak_subjects.append(f"{subject} (needs {required_grade}+, you have {user_grade})")
         
         if weak_subjects:
-            insights.append(f"To strengthen your candidacy for {top_career['career']}, consider: {', '.join(weak_subjects)}")
+            insights.append(f"To strengthen your candidacy for {top_career['career']}, focus on: {', '.join(weak_subjects[:3])}")
     
     # Skills insights
     user_skills = set(skills_interests.get('skills', []))
@@ -449,6 +767,15 @@ def generate_report_content(recommendations, student_info, subjects_grades, skil
         report.append(f"   Interests Match: {career['interests_match']}%")
         report.append(f"   Description: {career['description']}")
         report.append(f"   Reasoning: {career['reasoning']}")
+        
+        # Subject Requirements
+        report.append("   Subject Requirements:")
+        for subject in career['required_subjects']:
+            required_grade = career['required_grades'].get(subject, 'C+')
+            user_grade = subjects_grades.get(subject, 'Not Taken')
+            status = "MET" if user_grade not in ["Not Taken", "Select Grade"] and grade_to_points(user_grade) >= grade_to_points(required_grade) else "NOT MET"
+            report.append(f"     - {subject}: Required {required_grade}+ (You: {user_grade}) [{status}]")
+        
         report.append("   Recommended Universities:")
         for uni in career['universities'][:3]:
             report.append(f"     - {uni}")

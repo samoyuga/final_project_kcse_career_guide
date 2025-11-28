@@ -35,7 +35,7 @@ def main():
         st.write(f"**Phone:** {student_info['phone']}")
         st.write(f"**Email:** {student_info.get('email', 'Not provided')}")
         st.write(f"**Service:** AI Career Guidance Report")
-        st.write(f"**Amount:** KES 1")
+        st.write(f"**Amount:** KES 20")
         
         st.markdown("---")
         st.subheader("📚 Subjects Summary")
@@ -61,6 +61,8 @@ def main():
         3. Enter your M-Pesa PIN
         4. Wait for automatic confirmation
         5. Receive your career report instantly
+        
+        **💡 Important:** Use the same phone number registered above
         """)
     
     # Payment section
@@ -71,28 +73,45 @@ def main():
     
     with payment_col1:
         st.subheader("Payment Details")
-        st.info("""
-        **M-Pesa Payment Info:**
-        - Amount: KES 1
-        - PayBill: 174379
-        - Account: CAREER_[YourID]
+        st.info(f"""
+        **Lipa na M-Pesa Details:**
+        - Amount: KES 20
+        - Till Number: **6910505**
+        - Account: CAREER_{user_id}
         - No extra charges
+        
+        **Manual Payment Option:**
+        - Go to M-Pesa Menu
+        - Lipa na M-Pesa
+        - Buy Goods and Services
+        - Enter Till: **6910505**
+        - Amount: **20**
+        - Enter your PIN
         """)
     
     with payment_col2:
         st.subheader("Initiate Payment")
-        if st.button("💰 Pay via M-Pesa", type="primary", width='stretch'):
+        
+        # Payment confirmation
+        st.warning("**Payment Amount: KES 20**")
+        
+        if st.button("💰 Pay KES 20 via M-Pesa", type="primary", use_container_width=True):
             with st.spinner("Initiating M-Pesa payment..."):
-                # Process actual M-Pesa payment
-                payment_success = process_mpesa_payment(
-                    student_info['phone'], 
-                    1, 
-                    user_id
-                )
+                try:
+                    # Process M-Pesa payment without till_number parameter
+                    payment_success = process_mpesa_payment(
+                        student_info['phone'], 
+                        20,  # Amount
+                        user_id
+                    )
+                except TypeError as e:
+                    st.error(f"❌ Payment configuration error: {e}")
+                    st.info("Please check your M-Pesa integration setup")
+                    payment_success = False
             
             if payment_success:
                 # Save payment record
-                save_payment(user_id, 1, f"CAREER_{user_id}", "completed")
+                save_payment(user_id, 20, f"CAREER_{user_id}", "completed")
                 
                 # Generate career recommendations
                 with st.spinner("🎯 Generating your personalized career report..."):
@@ -111,27 +130,92 @@ def main():
                 st.success("✅ Payment confirmed! Your report is ready.")
                 st.balloons()
                 
-                # Auto-redirect to results after 2 seconds
-                time.sleep(2)
+                # Show success message before redirect
+                st.info("📊 Redirecting to your career report...")
+                
+                # Auto-redirect to results after 3 seconds
+                time.sleep(3)
                 st.switch_page("pages/4_📈_Results.py")
                 
             else:
                 st.error("❌ Payment failed. Please try again.")
                 st.info("""
                 **Troubleshooting Tips:**
-                - Ensure your phone number is correct
-                - Check your M-Pesa balance
-                - Ensure you have mobile data
-                - Try again in a few minutes
+                - Ensure your phone number is correct and has M-Pesa
+                - Check your M-Pesa balance (KES 20 required)
+                - Ensure you have mobile data connectivity
+                - Try the manual Lipa na M-Pesa option
+                - Contact support if issues persist
                 """)
     
-    # Demo mode notice
+    # Manual payment confirmation section
+    st.markdown("---")
+    st.subheader("🔧 Manual Payment Confirmation")
+    
+    with st.expander("If you paid manually or having issues"):
+        st.markdown("""
+        If you've already made payment via Lipa na M-Pesa but the system didn't detect it automatically,
+        or if you're experiencing technical issues:
+        """)
+        
+        confirm_col1, confirm_col2 = st.columns(2)
+        
+        with confirm_col1:
+            transaction_code = st.text_input("Enter M-Pesa Transaction Code", placeholder="e.g., QAZ45WER90")
+            
+        with confirm_col2:
+            if st.button("✅ Confirm Manual Payment", use_container_width=True):
+                if transaction_code:
+                    # Verify manual payment
+                    manual_payment_success = verify_manual_payment(transaction_code, user_id)
+                    
+                    if manual_payment_success:
+                        # Generate career recommendations
+                        with st.spinner("🎯 Generating your personalized career report..."):
+                            career_engine = CareerEngine()
+                            recommendations = career_engine.generate_recommendations(
+                                subjects_grades, skills_interests
+                            )
+                        
+                        # Save results to database
+                        save_career_results(user_id, recommendations)
+                        
+                        # Store recommendations in session state
+                        st.session_state.recommendations = recommendations
+                        st.session_state.payment_completed = True
+                        
+                        st.success("✅ Payment verified! Your report is ready.")
+                        st.balloons()
+                        time.sleep(2)
+                        st.switch_page("pages/4_📈_Results.py")
+                    else:
+                        st.error("❌ Could not verify payment. Please check transaction code or contact support.")
+                else:
+                    st.warning("⚠️ Please enter your M-Pesa transaction code")
+    
+    # Support information
     st.markdown("---")
     st.info("""
-    **💡 Demo Notice:** 
-    This is a live M-Pesa integration. For demo purposes, payments are set to KES 1. 
-    In production, you can adjust the amount as needed.
+    **📞 Need Help?**
+    - Payment Issues: 0723349693
+    - Technical Support: 0723349693
+    - Email: your-email@example.com
+    
+    **💼 Business Info:** 
+    This is a live Lipa na M-Pesa Buy Goods till number. All payments go directly to registered business account.
     """)
+
+def verify_manual_payment(transaction_code, user_id):
+    """
+    Verify manual payment - you'll need to implement this based on your M-Pesa API
+    For now, this is a placeholder that returns True for demo purposes
+    """
+    # TODO: Implement actual M-Pesa transaction verification
+    # This could involve checking your M-Pesa records or using M-Pesa API
+    if transaction_code and len(transaction_code) > 5:
+        save_payment(user_id, 20, f"CAREER_{user_id}", "completed", transaction_code)
+        return True
+    return False
 
 if __name__ == "__main__":
     main()
