@@ -1,293 +1,156 @@
-import sqlite3
+import streamlit as st
 import json
-import pandas as pd
 from datetime import datetime
 
 def init_db():
-    """Initialize SQLite database"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
-    
-    # Users table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            phone TEXT NOT NULL,
-            email TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
-    # Subjects table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS user_subjects (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            subject_name TEXT NOT NULL,
-            grade TEXT NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    ''')
-    
-    # Skills table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS user_skills (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            skill TEXT NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    ''')
-    
-    # Interests table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS user_interests (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            interest TEXT NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    ''')
-    
-    # Payments table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS payments (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            amount REAL NOT NULL,
-            mpesa_code TEXT,
-            checkout_request_id TEXT,
-            status TEXT DEFAULT 'pending',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    ''')
-    
-    # Results table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS career_results (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            recommendations TEXT,
-            generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    ''')
-    
-    conn.commit()
-    conn.close()
+    """Initialize session state for data storage"""
+    if 'users' not in st.session_state:
+        st.session_state.users = {}
+    if 'user_subjects' not in st.session_state:
+        st.session_state.user_subjects = {}
+    if 'user_skills' not in st.session_state:
+        st.session_state.user_skills = {}
+    if 'user_interests' not in st.session_state:
+        st.session_state.user_interests = {}
+    if 'payments' not in st.session_state:
+        st.session_state.payments = {}
+    if 'career_results' not in st.session_state:
+        st.session_state.career_results = {}
+    if 'user_counter' not in st.session_state:
+        st.session_state.user_counter = 0
 
 def save_user_data(student_info, subjects_grades, skills_interests):
-    """Save user data to database and return user ID"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
+    """Save user data to session state and return user ID"""
+    # Generate user ID
+    st.session_state.user_counter += 1
+    user_id = st.session_state.user_counter
     
-    try:
-        # Insert user
-        c.execute(
-            'INSERT INTO users (name, phone, email) VALUES (?, ?, ?)',
-            (student_info['name'], student_info['phone'], student_info.get('email', ''))
-        )
-        user_id = c.lastrowid
-        
-        # Insert subjects
-        for subject, grade in subjects_grades.items():
-            if grade != "Not Taken" and grade != "Select Grade":
-                c.execute(
-                    'INSERT INTO user_subjects (user_id, subject_name, grade) VALUES (?, ?, ?)',
-                    (user_id, subject, grade)
-                )
-        
-        # Insert skills
-        for skill in skills_interests.get('skills', []):
-            c.execute(
-                'INSERT INTO user_skills (user_id, skill) VALUES (?, ?)',
-                (user_id, skill)
-            )
-        
-        # Insert interests
-        for interest in skills_interests.get('interests', []):
-            c.execute(
-                'INSERT INTO user_interests (user_id, interest) VALUES (?, ?)',
-                (user_id, interest)
-            )
-        
-        conn.commit()
-        return user_id
-        
-    except Exception as e:
-        conn.rollback()
-        raise e
-    finally:
-        conn.close()
+    # Save user info
+    st.session_state.users[user_id] = {
+        'name': student_info['name'],
+        'phone': student_info['phone'],
+        'email': student_info.get('email', ''),
+        'created_at': datetime.now().isoformat()
+    }
+    
+    # Save subjects
+    st.session_state.user_subjects[user_id] = {}
+    for subject, grade in subjects_grades.items():
+        if grade != "Not Taken" and grade != "Select Grade":
+            st.session_state.user_subjects[user_id][subject] = grade
+    
+    # Save skills
+    st.session_state.user_skills[user_id] = skills_interests.get('skills', [])
+    
+    # Save interests
+    st.session_state.user_interests[user_id] = skills_interests.get('interests', [])
+    
+    return user_id
 
 def save_payment(user_id, amount, mpesa_code, status, checkout_request_id=None):
-    """Save payment information"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
+    """Save payment information to session state"""
+    payment_id = f"payment_{user_id}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
     
-    try:
-        c.execute(
-            'INSERT INTO payments (user_id, amount, mpesa_code, checkout_request_id, status) VALUES (?, ?, ?, ?, ?)',
-            (user_id, amount, mpesa_code, checkout_request_id, status)
-        )
-        conn.commit()
-    except Exception as e:
-        conn.rollback()
-        raise e
-    finally:
-        conn.close()
+    st.session_state.payments[payment_id] = {
+        'user_id': user_id,
+        'amount': amount,
+        'mpesa_code': mpesa_code,
+        'checkout_request_id': checkout_request_id,
+        'status': status,
+        'created_at': datetime.now().isoformat()
+    }
 
 def save_career_results(user_id, recommendations):
-    """Save career recommendations"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
+    """Save career recommendations to session state"""
+    result_id = f"result_{user_id}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
     
-    try:
-        c.execute(
-            'INSERT INTO career_results (user_id, recommendations) VALUES (?, ?)',
-            (user_id, json.dumps(recommendations))
-        )
-        conn.commit()
-    except Exception as e:
-        conn.rollback()
-        raise e
-    finally:
-        conn.close()
+    st.session_state.career_results[result_id] = {
+        'user_id': user_id,
+        'recommendations': recommendations,
+        'generated_at': datetime.now().isoformat()
+    }
 
 def check_payment_status(user_id):
     """Check if user has completed payment"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
-    
-    try:
-        c.execute(
-            'SELECT status FROM payments WHERE user_id = ? AND status = "completed"',
-            (user_id,)
-        )
-        result = c.fetchone()
-        return result is not None
-    finally:
-        conn.close()
+    for payment_id, payment in st.session_state.payments.items():
+        if payment['user_id'] == user_id and payment['status'] == 'completed':
+            return True
+    return False
 
 def get_user_data(user_id):
-    """Get user data by ID"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
+    """Get user data by ID from session state"""
+    user_id = int(user_id)  # Ensure it's integer for consistency
     
-    try:
-        # Get user info
-        c.execute('SELECT * FROM users WHERE id = ?', (user_id,))
-        user = c.fetchone()
-        
-        if not user:
-            return None
-        
-        # Get subjects
-        c.execute('SELECT subject_name, grade FROM user_subjects WHERE user_id = ?', (user_id,))
-        subjects = {row[0]: row[1] for row in c.fetchall()}
-        
-        # Get skills
-        c.execute('SELECT skill FROM user_skills WHERE user_id = ?', (user_id,))
-        skills = [row[0] for row in c.fetchall()]
-        
-        # Get interests
-        c.execute('SELECT interest FROM user_interests WHERE user_id = ?', (user_id,))
-        interests = [row[0] for row in c.fetchall()]
-        
-        return {
-            'user_info': {
-                'id': user[0],
-                'name': user[1],
-                'phone': user[2],
-                'email': user[3],
-                'created_at': user[4]
-            },
-            'subjects': subjects,
-            'skills': skills,
-            'interests': interests
-        }
-    finally:
-        conn.close()
+    if user_id not in st.session_state.users:
+        return None
+    
+    return {
+        'user_info': {
+            'id': user_id,
+            'name': st.session_state.users[user_id]['name'],
+            'phone': st.session_state.users[user_id]['phone'],
+            'email': st.session_state.users[user_id]['email'],
+            'created_at': st.session_state.users[user_id]['created_at']
+        },
+        'subjects': st.session_state.user_subjects.get(user_id, {}),
+        'skills': st.session_state.user_skills.get(user_id, []),
+        'interests': st.session_state.user_interests.get(user_id, [])
+    }
 
 def get_payment_history(user_id):
-    """Get payment history for a user"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
+    """Get payment history for a user from session state"""
+    user_id = int(user_id)
+    payment_list = []
     
-    try:
-        c.execute(
-            'SELECT * FROM payments WHERE user_id = ? ORDER BY created_at DESC',
-            (user_id,)
-        )
-        payments = c.fetchall()
-        
-        payment_list = []
-        for payment in payments:
+    for payment_id, payment in st.session_state.payments.items():
+        if payment['user_id'] == user_id:
             payment_list.append({
-                'id': payment[0],
-                'user_id': payment[1],
-                'amount': payment[2],
-                'mpesa_code': payment[3],
-                'checkout_request_id': payment[4],
-                'status': payment[5],
-                'created_at': payment[6]
+                'id': payment_id,
+                'user_id': payment['user_id'],
+                'amount': payment['amount'],
+                'mpesa_code': payment['mpesa_code'],
+                'checkout_request_id': payment['checkout_request_id'],
+                'status': payment['status'],
+                'created_at': payment['created_at']
             })
-        
-        return payment_list
-    finally:
-        conn.close()
+    
+    # Sort by creation date (newest first)
+    payment_list.sort(key=lambda x: x['created_at'], reverse=True)
+    return payment_list
 
 def get_career_results(user_id):
-    """Get career results for a user"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
+    """Get career results for a user from session state"""
+    user_id = int(user_id)
+    latest_result = None
     
-    try:
-        c.execute(
-            'SELECT recommendations, generated_at FROM career_results WHERE user_id = ? ORDER BY generated_at DESC LIMIT 1',
-            (user_id,)
-        )
-        result = c.fetchone()
-        
-        if result:
-            return {
-                'recommendations': json.loads(result[0]),
-                'generated_at': result[1]
-            }
-        return None
-    finally:
-        conn.close()
+    for result_id, result in st.session_state.career_results.items():
+        if result['user_id'] == user_id:
+            if latest_result is None or result['generated_at'] > latest_result['generated_at']:
+                latest_result = result
+    
+    return latest_result
 
 def cleanup_old_data(days_old=30):
-    """Clean up data older than specified days (for maintenance)"""
-    conn = sqlite3.connect('career_guide.db')
-    c = conn.cursor()
-    
-    try:
-        cutoff_date = f"datetime('now', '-{days_old} days')"
-        
-        # Delete old career results
-        c.execute(f'DELETE FROM career_results WHERE generated_at < {cutoff_date}')
-        
-        # Delete old payments
-        c.execute(f'DELETE FROM payments WHERE created_at < {cutoff_date}')
-        
-        # Find users with no recent activity
-        c.execute(f'''
-            DELETE FROM users 
-            WHERE id NOT IN (
-                SELECT DISTINCT user_id FROM payments WHERE created_at >= {cutoff_date}
-                UNION 
-                SELECT DISTINCT user_id FROM career_results WHERE generated_at >= {cutoff_date}
-            ) AND created_at < {cutoff_date}
-        ''')
-        
-        conn.commit()
-        return c.rowcount  # Number of rows affected
-    except Exception as e:
-        conn.rollback()
-        raise e
-    finally:
-        conn.close()
+    """Clean up data older than specified days (for maintenance) - Not needed for session state"""
+    # Session state is temporary and clears when app restarts
+    # No cleanup needed for demo purposes
+    return 0
+
+# Additional helper functions for session state management
+def get_all_users():
+    """Get all users from session state (for debugging)"""
+    return st.session_state.users
+
+def get_all_payments():
+    """Get all payments from session state (for debugging)"""
+    return st.session_state.payments
+
+def clear_all_data():
+    """Clear all data from session state (for testing)"""
+    st.session_state.users = {}
+    st.session_state.user_subjects = {}
+    st.session_state.user_skills = {}
+    st.session_state.user_interests = {}
+    st.session_state.payments = {}
+    st.session_state.career_results = {}
+    st.session_state.user_counter = 0
